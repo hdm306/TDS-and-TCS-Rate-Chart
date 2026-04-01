@@ -11,28 +11,29 @@
         .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); }
         .gradient-text { background: linear-gradient(to right, #fbbf24, #f59e0b, #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .row-hover:hover { background: rgba(255, 255, 255, 0.07); cursor: pointer; transition: all 0.2s; }
-        .modal-bg { background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(10px); display: none; transition: all 0.3s ease; }
+        .modal-bg { background: rgba(0, 0, 0, 0.9); backdrop-filter: blur(10px); display: none; }
         .active-modal { display: flex !important; }
         .tcs-border { border-left: 4px solid #f59e0b; }
         .tds-border { border-left: 4px solid #3b82f6; }
+        th { border-bottom: 1px solid rgba(255,255,255,0.1); }
     </style>
 </head>
 <body class="text-slate-200 antialiased">
 
     <div id="infoModal" class="modal-bg fixed inset-0 z-[100] items-center justify-center p-4" onclick="closeModal()">
-        <div class="glass max-w-lg w-full rounded-[2.5rem] p-8 shadow-2xl border-white/10 relative" onclick="event.stopPropagation()">
+        <div class="glass max-w-lg w-full rounded-[2.5rem] p-8 shadow-2xl border-white/10 relative text-center" onclick="event.stopPropagation()">
             <button onclick="closeModal()" class="absolute top-6 right-6 text-slate-400 hover:text-white text-2xl">&times;</button>
             <div id="modalContent">
-                <span id="modalCategory" class="text-xs font-bold uppercase tracking-widest text-amber-500">Tax Provision Detail</span>
+                <span id="modalCategory" class="text-xs font-bold uppercase tracking-widest text-amber-500">Professional Guidance</span>
                 <h3 id="modalTitle" class="text-3xl font-extrabold text-white mt-2 mb-4 leading-tight">Section Name</h3>
-                <div class="space-y-4 text-slate-300 leading-relaxed">
-                    <p id="modalDesc">Detailed explanation of the tax implication goes here.</p>
-                    <div class="bg-white/5 p-4 rounded-2xl border border-white/5">
-                        <p class="text-xs text-slate-500 uppercase font-bold">Important Compliance Note</p>
-                        <p id="modalKey" class="text-sm text-slate-200 mt-1 italic">Threshold and timing details.</p>
+                <div class="space-y-4 text-slate-300 leading-relaxed text-left">
+                    <p id="modalDesc">Detailed explanation...</p>
+                    <div class="bg-blue-500/10 p-4 rounded-2xl border border-blue-500/20">
+                        <p class="text-xs text-blue-400 uppercase font-bold tracking-widest">Compliance Rule</p>
+                        <p id="modalKey" class="text-sm text-slate-200 mt-1 italic">Details...</p>
                     </div>
                 </div>
-                <button onclick="closeModal()" class="w-full mt-8 py-4 bg-white/10 hover:bg-white/20 text-white font-bold rounded-2xl transition border border-white/10">Close</button>
+                <button onclick="closeModal()" class="w-full mt-8 py-4 bg-white/5 hover:bg-white/10 text-white font-bold rounded-2xl transition border border-white/10">Back to Chart</button>
             </div>
         </div>
     </div>
@@ -41,113 +42,113 @@
         
         <header class="text-center mb-16">
             <div class="mb-6 flex flex-col items-center">
-                <h2 class="text-3xl font-black tracking-tight text-white uppercase italic">J D M & Co.</h2>
-                <div class="h-1 w-20 bg-gradient-to-right from-amber-500 to-pink-500 my-2 rounded-full"></div>
-                <p class="text-sm font-bold tracking-[0.2em] text-slate-400 uppercase">Chartered Accountants</p>
+                <h2 class="text-4xl font-black tracking-tighter text-white uppercase italic">J D M & Co.</h2>
+                <div class="h-1.5 w-24 bg-gradient-to-r from-amber-500 to-pink-500 my-3 rounded-full"></div>
+                <p class="text-xs font-extrabold tracking-[0.4em] text-slate-400 uppercase">Chartered Accountants</p>
             </div>
             <h1 class="text-5xl md:text-7xl font-extrabold tracking-tighter mb-4">
                 <span class="text-white">TDS & TCS</span> <br>
                 <span class="gradient-text">Master Rate Chart</span>
             </h1>
-            <p class="text-slate-400 text-lg">Financial Year 2026-27 | Assessment Year 2027-28</p>
+            <p class="text-slate-400 text-lg font-medium">Financial Year 2026-27 | Assessment Year 2027-28</p>
         </header>
 
         <div class="sticky top-6 z-50 mb-12">
             <div class="glass shadow-2xl rounded-2xl flex items-center p-2 border-white/10">
                 <div class="pl-4 text-slate-500"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></div>
-                <input type="text" id="searchInput" onkeyup="filterTables()" placeholder="Quick Search (e.g. Rent, 194J, Crypto)..." class="w-full bg-transparent border-none focus:ring-0 p-4 text-white placeholder-slate-500 text-lg">
+                <input type="text" id="searchInput" onkeyup="filterTables()" placeholder="Search Section (e.g. 194J, 393), Nature, or Keyword..." class="w-full bg-transparent border-none focus:ring-0 p-4 text-white placeholder-slate-500 text-lg">
             </div>
         </div>
 
         <div class="mb-20">
-            <h2 class="text-3xl font-bold flex items-center gap-3 mb-8">
-                <span class="w-3 h-10 bg-blue-500 rounded-full"></span> TDS Provisions
+            <h2 class="text-2xl font-bold flex items-center gap-3 mb-8">
+                <span class="w-3 h-10 bg-blue-500 rounded-full shadow-[0_0_20px_rgba(59,130,246,0.4)]"></span> 
+                TDS Provisions (Income-tax Act)
             </h2>
             <div class="glass rounded-[2rem] overflow-hidden border-white/5 shadow-2xl">
-                <table class="w-full text-left" id="tdsTable">
-                    <thead>
-                        <tr class="bg-white/5 text-slate-400 text-[10px] uppercase tracking-widest font-bold border-b border-white/5">
-                            <th class="p-6">Nature of Payment</th>
-                            <th class="p-6 text-center">New Sec</th>
-                            <th class="p-6">TDS Rate</th>
-                            <th class="p-6">Threshold (p.a.)</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-white/5">
-                        <tr class="row-hover tds-border" onclick="showInfo('salary')"><td class="p-6 font-semibold">Salary</td><td class="p-6 text-center text-blue-400 font-mono">392</td><td class="p-6 text-white font-bold">Slab Rates</td><td class="p-6 text-slate-400 italic">As per Slab</td></tr>
-                        <tr class="row-hover tds-border" onclick="showInfo('ins_comm')"><td class="p-6 font-semibold">Insurance Commission</td><td class="p-6 text-center text-blue-400 font-mono">393(1)-1(i)</td><td class="p-6 text-white font-bold">Co: 10% / Oth: 2%</td><td class="p-6 text-slate-400">20,000</td></tr>
-                        <tr class="row-hover tds-border" onclick="showInfo('oth_comm')"><td class="p-6 font-semibold">Commission (Other)</td><td class="p-6 text-center text-blue-400 font-mono">393(1)-1(ii)</td><td class="p-6 text-white font-bold">2%</td><td class="p-6 text-slate-400">20,000</td></tr>
-                        <tr class="row-hover tds-border" onclick="showInfo('rent_mach')"><td class="p-6 font-semibold">Rent: Plant & Machinery</td><td class="p-6 text-center text-blue-400 font-mono">393(1)-2(ii)a</td><td class="p-6 text-white font-bold">2%</td><td class="p-6 text-slate-400">50,000 p.m.</td></tr>
-                        <tr class="row-hover tds-border" onclick="showInfo('rent_build')"><td class="p-6 font-semibold">Rent: Building/Furniture</td><td class="p-6 text-center text-blue-400 font-mono">393(1)-2(ii)b</td><td class="p-6 text-white font-bold">10%</td><td class="p-6 text-slate-400">50,000 p.m.</td></tr>
-                        <tr class="row-hover tds-border" onclick="showInfo('prop_pur')"><td class="p-6 font-semibold">Purchase of Immovable Prop.</td><td class="p-6 text-center text-blue-400 font-mono">393(1)-3(i)</td><td class="p-6 text-white font-bold">1%</td><td class="p-6 text-slate-400">50 Lacs</td></tr>
-                        <tr class="row-hover tds-border" onclick="showInfo('comp_acq')"><td class="p-6 font-semibold">Compulsory Acquisition</td><td class="p-6 text-center text-blue-400 font-mono">393(1)-3(iii)</td><td class="p-6 text-white font-bold">10%</td><td class="p-6 text-slate-400">5,00,000</td></tr>
-                        <tr class="row-hover tds-border" onclick="showInfo('int_bank')"><td class="p-6 font-semibold">Interest: Bank/Post Office</td><td class="p-6 text-center text-blue-400 font-mono">393(1)-5(ii)</td><td class="p-6 text-white font-bold">10%</td><td class="p-6 text-slate-400">50k / 1L (Sr)</td></tr>
-                        <tr class="row-hover tds-border" onclick="showInfo('int_oth')"><td class="p-6 font-semibold">Interest: Others</td><td class="p-6 text-center text-blue-400 font-mono">393(1)-5(iii)</td><td class="p-6 text-white font-bold">10%</td><td class="p-6 text-slate-400">10,000</td></tr>
-                        <tr class="row-hover tds-border" onclick="showInfo('contractor')"><td class="p-6 font-semibold">Contractor Payments</td><td class="p-6 text-center text-blue-400 font-mono">393(1)-6(i)</td><td class="p-6 text-white font-bold">1% / 2%</td><td class="p-6 text-slate-400">30k / 1L</td></tr>
-                        <tr class="row-hover tds-border" onclick="showInfo('prof_fees')"><td class="p-6 font-semibold text-blue-300">Professional/Royalty Fees</td><td class="p-6 text-center text-blue-400 font-mono">393(1)-6(iii)</td><td class="p-6 text-white font-bold">10%</td><td class="p-6 text-slate-400">50,000</td></tr>
-                        <tr class="row-hover tds-border" onclick="showInfo('tech_fees')"><td class="p-6 font-semibold">Technical Fees/Call Center</td><td class="p-6 text-center text-blue-400 font-mono">393(1)-6(iii)</td><td class="p-6 text-white font-bold">2%</td><td class="p-6 text-slate-400">50,000</td></tr>
-                        <tr class="row-hover tds-border" onclick="showInfo('dividend')"><td class="p-6 font-semibold">Dividend</td><td class="p-6 text-center text-blue-400 font-mono">393(1)-(7)</td><td class="p-6 text-white font-bold">10%</td><td class="p-6 text-slate-400">10,000</td></tr>
-                        <tr class="row-hover tds-border" onclick="showInfo('goods_pur')"><td class="p-6 font-semibold">Purchase of Goods</td><td class="p-6 text-center text-blue-400 font-mono">393(1)-(8)(ii)</td><td class="p-6 text-white font-bold">0.1%</td><td class="p-6 text-slate-400">50 Lacs</td></tr>
-                        <tr class="row-hover tds-border" onclick="showInfo('crypto')"><td class="p-6 font-semibold text-pink-400">Crypto / VDA Transfer</td><td class="p-6 text-center text-blue-400 font-mono">393(1)-(8)(iv)</td><td class="p-6 text-pink-400 font-bold">1%</td><td class="p-6 text-slate-400">10k / 50k</td></tr>
-                        <tr class="row-hover tds-border" onclick="showInfo('partner')"><td class="p-6 font-semibold">Payment to Firm Partner</td><td class="p-6 text-center text-blue-400 font-mono">393(3)-(7)</td><td class="p-6 text-white font-bold">10%</td><td class="p-6 text-slate-400">20,000</td></tr>
-                    </tbody>
-                </table>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse" id="tdsTable">
+                        <thead>
+                            <tr class="bg-white/5 text-slate-400 text-[10px] uppercase tracking-widest font-bold">
+                                <th class="p-6 whitespace-nowrap">Nature of Payment</th>
+                                <th class="p-6 text-center whitespace-nowrap">Old Sec (1961)</th>
+                                <th class="p-6 text-center whitespace-nowrap">New Sec (2025)</th>
+                                <th class="p-6 whitespace-nowrap">Rate</th>
+                                <th class="p-6 whitespace-nowrap">Threshold (p.a.)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-white/5">
+                            <tr class="row-hover tds-border" onclick="showInfo('salary')"><td class="p-6 font-semibold">Salary</td><td class="p-6 text-center text-slate-500 font-mono">192</td><td class="p-6 text-center text-blue-400 font-mono">392</td><td class="p-6 text-white font-bold">Slab Rates</td><td class="p-6 text-slate-400 italic">Slab Rates</td></tr>
+                            <tr class="row-hover tds-border" onclick="showInfo('ins_comm')"><td class="p-6 font-semibold text-slate-300">Insurance Commission</td><td class="p-6 text-center text-slate-500 font-mono">194D</td><td class="p-6 text-center text-blue-400 font-mono">393(1)-1(i)</td><td class="p-6 text-white">10% / 2%</td><td class="p-6 text-slate-400">20,000</td></tr>
+                            <tr class="row-hover tds-border" onclick="showInfo('oth_comm')"><td class="p-6 font-semibold text-slate-300">Commission (Other)</td><td class="p-6 text-center text-slate-500 font-mono">194H</td><td class="p-6 text-center text-blue-400 font-mono">393(1)-1(ii)</td><td class="p-6 text-white">2%</td><td class="p-6 text-slate-400">20,000</td></tr>
+                            <tr class="row-hover tds-border" onclick="showInfo('rent_mach')"><td class="p-6 font-semibold text-slate-300">Rent: Plant & Machinery</td><td class="p-6 text-center text-slate-500 font-mono">194I</td><td class="p-6 text-center text-blue-400 font-mono">393(1)-2(ii)a</td><td class="p-6 text-white font-bold">2%</td><td class="p-6 text-slate-400">50,000 p.m.</td></tr>
+                            <tr class="row-hover tds-border" onclick="showInfo('rent_build')"><td class="p-6 font-semibold text-slate-300">Rent: Building/Land</td><td class="p-6 text-center text-slate-500 font-mono">194I</td><td class="p-6 text-center text-blue-400 font-mono">393(1)-2(ii)b</td><td class="p-6 text-white font-bold">10%</td><td class="p-6 text-slate-400">50,000 p.m.</td></tr>
+                            <tr class="row-hover tds-border" onclick="showInfo('prop_pur')"><td class="p-6 font-semibold text-slate-300">Purchase of Immovable Prop.</td><td class="p-6 text-center text-slate-500 font-mono">194IA</td><td class="p-6 text-center text-blue-400 font-mono">393(1)-3(i)</td><td class="p-6 text-white">1%</td><td class="p-6 text-slate-400">50 Lacs</td></tr>
+                            <tr class="row-hover tds-border" onclick="showInfo('comp_acq')"><td class="p-6 font-semibold text-slate-300">Compulsory Acquisition</td><td class="p-6 text-center text-slate-500 font-mono">194LA</td><td class="p-6 text-center text-blue-400 font-mono">393(1)-3(iii)</td><td class="p-6 text-white">10%</td><td class="p-6 text-slate-400">5,00,000</td></tr>
+                            <tr class="row-hover tds-border" onclick="showInfo('int_bank')"><td class="p-6 font-semibold text-slate-300">Interest: Bank/Post Office</td><td class="p-6 text-center text-slate-500 font-mono">194A</td><td class="p-6 text-center text-blue-400 font-mono">393(1)-5(ii)</td><td class="p-6 text-white font-bold text-blue-400">10%</td><td class="p-6 text-slate-400">50k / 1L (Sr)</td></tr>
+                            <tr class="row-hover tds-border" onclick="showInfo('contractor')"><td class="p-6 font-semibold text-slate-300">Contractor Payments</td><td class="p-6 text-center text-slate-500 font-mono">194C</td><td class="p-6 text-center text-blue-400 font-mono">393(1)-6(i)</td><td class="p-6 text-white">1% / 2%</td><td class="p-6 text-slate-400">30k / 1L agg.</td></tr>
+                            <tr class="row-hover tds-border" onclick="showInfo('prof_fees')"><td class="p-6 font-semibold text-blue-300 italic underline decoration-blue-500/50">Professional Fees / Royalty</td><td class="p-6 text-center text-slate-500 font-mono">194J</td><td class="p-6 text-center text-blue-400 font-mono">393(1)-6(iii)</td><td class="p-6 text-white font-bold text-blue-400">10%</td><td class="p-6 text-slate-400">50,000</td></tr>
+                            <tr class="row-hover tds-border" onclick="showInfo('tech_fees')"><td class="p-6 font-semibold text-slate-300">Technical Fees / Call Center</td><td class="p-6 text-center text-slate-500 font-mono">194J</td><td class="p-6 text-center text-blue-400 font-mono">393(1)-6(iii)</td><td class="p-6 text-white">2%</td><td class="p-6 text-slate-400">50,000</td></tr>
+                            <tr class="row-hover tds-border" onclick="showInfo('dividend')"><td class="p-6 font-semibold text-slate-300">Dividend</td><td class="p-6 text-center text-slate-500 font-mono">194</td><td class="p-6 text-center text-blue-400 font-mono">393(1)-(7)</td><td class="p-6 text-white">10%</td><td class="p-6 text-slate-400">10,000</td></tr>
+                            <tr class="row-hover tds-border" onclick="showInfo('crypto')"><td class="p-6 font-semibold text-pink-400">Transfer of Crypto (VDA)</td><td class="p-6 text-center text-slate-500 font-mono">194S</td><td class="p-6 text-center text-blue-400 font-mono">393(1)-8(iv)</td><td class="p-6 text-pink-400 font-bold">1%</td><td class="p-6 text-slate-400">10k / 50k</td></tr>
+                            <tr class="row-hover tds-border" onclick="showInfo('partner')"><td class="p-6 font-semibold text-slate-300">Payment to Partner of Firm</td><td class="p-6 text-center text-slate-500 font-mono">194T</td><td class="p-6 text-center text-blue-400 font-mono">393(3)-(7)</td><td class="p-6 text-white font-bold">10%</td><td class="p-6 text-slate-400">20,000</td></tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
         <div class="mb-20">
-            <h2 class="text-3xl font-bold flex items-center gap-3 mb-8">
-                <span class="w-3 h-10 bg-amber-500 rounded-full"></span> TCS Provisions
+            <h2 class="text-2xl font-bold flex items-center gap-3 mb-8">
+                <span class="w-3 h-10 bg-amber-500 rounded-full shadow-[0_0_20px_rgba(245,158,11,0.4)]"></span> 
+                TCS Provisions (Income-tax Act)
             </h2>
             <div class="glass rounded-[2rem] overflow-hidden border-white/5 shadow-2xl">
-                <table class="w-full text-left" id="tcsTable">
-                    <thead>
-                        <tr class="bg-white/5 text-slate-400 text-[10px] uppercase tracking-widest font-bold border-b border-white/5">
-                            <th class="p-6">Nature of Goods</th>
-                            <th class="p-6 text-center">New Sec</th>
-                            <th class="p-6">TCS Rate</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-white/5">
-                        <tr class="row-hover tcs-border" onclick="showInfo('liquor')"><td class="p-6 font-semibold">Alcoholic Liquor</td><td class="p-6 text-center text-amber-400 font-mono">394(1)-A(1)</td><td class="p-6 text-white font-bold text-lg">2%</td></tr>
-                        <tr class="row-hover tcs-border" onclick="showInfo('scrap')"><td class="p-6 font-semibold">Sale of Scrap</td><td class="p-6 text-center text-amber-400 font-mono">394(1)-A(4)</td><td class="p-6 text-white font-bold text-lg">2%</td></tr>
-                        <tr class="row-hover tcs-border" onclick="showInfo('vehicle')"><td class="p-6 font-semibold">Motor Vehicle (> 10L)</td><td class="p-6 text-center text-amber-400 font-mono">394(1)-A(6)</td><td class="p-6 text-white font-bold text-lg">1%</td></tr>
-                        <tr class="row-hover tcs-border" onclick="showInfo('lrs_edu')"><td class="p-6 font-semibold">LRS: Education (via Loan)</td><td class="p-6 text-center text-amber-400 font-mono">394(1)-A(7)</td><td class="p-6 text-white font-bold text-lg">0%</td></tr>
-                        <tr class="row-hover tcs-border" onclick="showInfo('lrs_med')"><td class="p-6 font-semibold">LRS: Education/Medical (>10L)</td><td class="p-6 text-center text-amber-400 font-mono">394(1)-A(7)</td><td class="p-6 text-white font-bold text-lg">2%</td></tr>
-                        <tr class="row-hover tcs-border" onclick="showInfo('lrs_oth')"><td class="p-6 font-semibold text-red-400">LRS: Any other purpose (>10L)</td><td class="p-6 text-center text-amber-400 font-mono">394(1)-A(7)</td><td class="p-6 text-red-400 font-bold text-lg">20%</td></tr>
-                        <tr class="row-hover tcs-border" onclick="showInfo('tour')"><td class="p-6 font-semibold">Overseas Tour Package</td><td class="p-6 text-center text-amber-400 font-mono">394(1)-A(8)</td><td class="p-6 text-white font-bold text-lg">2% / 5% / 20%</td></tr>
-                    </tbody>
-                </table>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left" id="tcsTable">
+                        <thead>
+                            <tr class="bg-white/5 text-slate-400 text-[10px] uppercase tracking-widest font-bold">
+                                <th class="p-6">Nature of Goods/Transaction</th>
+                                <th class="p-6 text-center whitespace-nowrap">Old Sec (1961)</th>
+                                <th class="p-6 text-center whitespace-nowrap">New Sec (2025)</th>
+                                <th class="p-6 text-right whitespace-nowrap">TCS Rate</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-white/5">
+                            <tr class="row-hover tcs-border" onclick="showInfo('liquor')"><td class="p-6 font-semibold">Alcoholic Liquor</td><td class="p-6 text-center text-slate-500 font-mono">206C(1)</td><td class="p-6 text-center text-amber-400 font-mono">394(1)-A(1)</td><td class="p-6 text-right font-bold text-amber-400">2%</td></tr>
+                            <tr class="row-hover tcs-border" onclick="showInfo('scrap')"><td class="p-6 font-semibold">Sale of Scrap</td><td class="p-6 text-center text-slate-500 font-mono">206C(1)</td><td class="p-6 text-center text-amber-400 font-mono">394(1)-A(4)</td><td class="p-6 text-right font-bold text-amber-400">2%</td></tr>
+                            <tr class="row-hover tcs-border" onclick="showInfo('vehicle')"><td class="p-6 font-semibold text-slate-300">Motor Vehicle (> 10L)</td><td class="p-6 text-center text-slate-500 font-mono">206C(1F)</td><td class="p-6 text-center text-amber-400 font-mono">394(1)-A(6)</td><td class="p-6 text-right font-bold">1%</td></tr>
+                            <tr class="row-hover tcs-border" onclick="showInfo('lrs_edu')"><td class="p-6 font-semibold text-slate-300">Remittance: LRS Education (Loan)</td><td class="p-6 text-center text-slate-500 font-mono">206C(1G)a</td><td class="p-6 text-center text-amber-400 font-mono">394(1)-A(7)</td><td class="p-6 text-right font-bold">0%</td></tr>
+                            <tr class="row-hover tcs-border" onclick="showInfo('lrs_oth')"><td class="p-6 font-semibold text-red-400">Remittance: LRS (Any purpose >10L)</td><td class="p-6 text-center text-slate-500 font-mono">206C(1G)a</td><td class="p-6 text-center text-amber-400 font-mono">394(1)-A(7)</td><td class="p-6 text-right font-extrabold text-red-500">20%</td></tr>
+                            <tr class="row-hover tcs-border" onclick="showInfo('tour')"><td class="p-6 font-semibold text-slate-300">Overseas Tour Package</td><td class="p-6 text-center text-slate-500 font-mono">206C(1G)b</td><td class="p-6 text-center text-amber-400 font-mono">394(1)-A(8)</td><td class="p-6 text-right font-bold text-amber-400">2% / 5% / 20%</td></tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
-        <footer class="mt-20 border-t border-white/5 py-12">
-            <div class="glass p-8 rounded-3xl mb-10 text-xs text-slate-500 leading-relaxed">
-                <p class="font-bold text-slate-300 mb-2 uppercase tracking-widest">Legal Disclaimer</p>
-                The information provided in this chart is for general informational purposes only and is based on the provisions of the Income Tax Act as of FY 2026-27. While we strive to keep the information accurate and up-to-date, J D M & Co. makes no representations or warranties of any kind about the completeness or accuracy of this data. Users are advised to consult with a professional Chartered Accountant before making any financial or tax-related decisions. This chart is for private circulation only.
-            </div>
-            <div class="text-center text-slate-600 text-sm">
-                Developed for <b>J D M & Co.</b> | Chartered Accountants
+        <footer class="mt-20 py-12 border-t border-white/5">
+            <div class="glass p-8 rounded-[2rem] text-xs text-slate-500 leading-relaxed max-w-4xl mx-auto shadow-xl">
+                <p class="font-bold text-slate-300 mb-3 uppercase tracking-[0.2em] flex items-center gap-2">
+                    <svg class="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                    Statutory Disclaimer
+                </p>
+                The information above is mapped between the Income-tax Act, 1961 and the new 2025 Act for the convenience of J D M & Co. clients. While meticulous care has been taken, tax laws are subject to dynamic changes and notifications. This is a reference guide only. Always refer to the official Gazette of India or consult our tax partners before acting on this information.
             </div>
         </footer>
     </div>
 
     <script>
         const explanationData = {
-            'salary': { title: 'Salary (Sec 392)', desc: 'TDS is calculated based on average tax rates as per the applicable slab for the employee.', key: 'Deduct at time of payment.' },
-            'ins_comm': { title: 'Insurance Commission', desc: 'Payments to agents for insurance business procurement.', key: '10% for companies, 2% for others. Limit: 20k p.a.' },
-            'rent_build': { title: 'Rent: Building/Land', desc: 'Applicable for use of land, building, or furniture.', key: '10% TDS if payment exceeds 50,000 per month.' },
-            'prop_pur': { title: 'Immovable Property Purchase', desc: 'TDS on purchase of property other than agricultural land.', key: '1% TDS if total consideration is 50 Lacs or more.' },
-            'contractor': { title: 'Contractor Payments', desc: 'Includes sub-contracts and job work.', key: '1% for Ind/HUF, 2% for others. Single: 30k, Agg: 1L.' },
-            'prof_fees': { title: 'Professional Fees', desc: 'Covers legal, medical, engineering, or architectural services.', key: '10% rate. Threshold: 50,000 p.a. per service.' },
-            'crypto': { title: 'Crypto / VDA Transfer', desc: 'Applicable on transfer of any Virtual Digital Asset.', key: '1% mandatory deduction to track the transaction trail.' },
-            'lrs_oth': { title: 'LRS Remittance (Other)', desc: 'High-value foreign remittances for investments or travel.', key: '20% TCS on amounts exceeding 10 Lakhs per annum.' },
-            'tour': { title: 'Overseas Tour Package', desc: 'Booking of foreign travel packages through agents.', key: '2% up to 7L, higher rates above that limit.' },
-            // Additional entries...
+            'salary': { title: 'Salary (Sec 392)', desc: 'Replaces the old Sec 192. Tax is deducted as per the applicable slab rate of the employee for the year.', key: 'Deduct based on average estimated tax rate.' },
+            'prof_fees': { title: 'Professional Fees (Sec 393)', desc: 'Mapping from the old Sec 194J. Covers professional fees, royalty, and non-compete fees.', key: 'Rate remains 10%. Threshold: 50,000 p.a. for each service.' },
+            'crypto': { title: 'VDA / Crypto Transfer', desc: 'Old Sec 194S. 1% TDS on the transfer of Virtual Digital Assets.', key: 'Threshold of 10,000 for non-specified persons and 50,000 for specified persons.' },
+            'rent_build': { title: 'Rent on Building/Land', desc: 'Old Sec 194I. Threshold of 50,000 per month.', key: 'Rate is 10%. Ensure PAN of landlord is verified.' },
+            'lrs_oth': { title: 'LRS Remittance (>10L)', desc: '20% TCS applies to non-educational/non-medical foreign remittances exceeding 10 Lakhs.', key: 'High tax rate intended to monitor large foreign outflows.' }
         };
 
         function showInfo(key) {
-            const data = explanationData[key] || { title: 'Section Detail', desc: 'Detailed provision data coming soon.', key: 'Verify with Finance Act 2026.' };
+            const data = explanationData[key] || { title: 'Section Provision', desc: 'Provision under the new tax code for FY 2026-27.', key: 'Check latest circulars for implementation rules.' };
             document.getElementById('modalTitle').innerText = data.title;
             document.getElementById('modalDesc').innerText = data.desc;
             document.getElementById('modalKey').innerText = data.key;
